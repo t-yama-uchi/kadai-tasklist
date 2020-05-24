@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <!-- ここにページ毎のコンテンツを書く -->
     <h1>新規タスクリストの作成</h1>
         <!--colをつける場合はrowを先につけるのは必須-->
