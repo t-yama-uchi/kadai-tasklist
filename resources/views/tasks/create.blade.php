@@ -8,6 +8,11 @@
         <div class="row">
         <div class="col-sm-8">
             {!! Form::model($task, ['route' => 'tasks.store']) !!}
+                <!--追加-->
+                <div class="form-group">
+                    {!! Form::label('status', '未/済:') !!}
+                    {!! Form::text('status', null, ['class' => 'form-control']) !!}
+                </div>
         
                 <div class="form-group">
                     {!! Form::label('content', 'タスク:') !!}

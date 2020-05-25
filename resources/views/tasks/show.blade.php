@@ -7,11 +7,13 @@
     <table class="table table-bordered table-striped">
         <tr>
             <th>id</th>
+            <th>未/済</th>
             <th>タスク</th>
             
         </tr>
         <tr>
             <td>{{ $task->id }}</td>
+            <td>{{ $task->status }}</td>
             <td>{{ $task->content }}</td>
         </tr>
     </table>
