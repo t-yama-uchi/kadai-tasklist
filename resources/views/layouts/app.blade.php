@@ -25,6 +25,8 @@
                     <!--ナビバーに表示させたい場合、ulにnavbar-navを、そのリストにはnav-itemをつける-->
                     <ul class="navbar-nav">
                         <li class="nav-item">{!! link_to_route('tasks.create', '新規タスクリストの作成', [], ['class' => 'nav-link']) !!}</li>
+                        <li class="nav-item">{!! link_to_route('signup.get', '新規登録', [], ['class' => 'nav-link']) !!}</li>
+                        <li class="nav-item">{!! link_to_route('signup.post', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
                     </ul>
                 </div>
             </nav>

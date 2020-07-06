@@ -20,6 +20,6 @@ Route::get('/',function(){
     return view('welcome');
 });
 
-//ユーザ登録（追加）
+//ユーザ登録（追加）twitterクローン6.2の記載のもの
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
