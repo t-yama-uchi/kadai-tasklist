@@ -28,6 +28,6 @@ Route::post('login','Auth\LoginController@login')->name('login.post');
 Route::get('logout','Auth\LoginController@logout')->name('logout.get');
 
 //ユーザー機能（追加） 8.2 Router　ログイン認証付きのルーティングより
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => ['auth']], function() {
     Route::resource('tasks', 'TasksController');
 });

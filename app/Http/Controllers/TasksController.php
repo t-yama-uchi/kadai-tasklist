@@ -61,24 +61,37 @@ class TasksController extends Controller
         return redirect('/tasks/list');
     }
 
+    //ここの処理の変更が必要(1)
     public function show($id)
     {
         $task = Task::find($id);
         
-        return view('tasks.show', [
-            'task' => $task,
-        ]);
+        if (\Auth::id() === $task->user_id) {
+            return view('tasks.show', [
+                'task' => $task,
+            ]);
+        } else {
+            return redirect('/');
+        }
+        
     }
 
+    //ここの処理の変更が必要(2)
     public function edit($id)
     {
         $task = Task::find($id);
         
-        return view('tasks.edit', [
-            'task' => $task,    
-        ]);
+        if (\Auth::id() === $task->user_id) {
+            return view('tasks.edit', [
+                'task' => $task,    
+            ]);
+        } else {
+            return redirect('/');
+        }
+        
     }
 
+    //ここの処理の変更が必要(3)ここも多分これで平気
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -91,25 +104,24 @@ class TasksController extends Controller
         $task->user_id = $request->user()->id; //追加
         $task->content = $request->content;
         
-        // $task->save();
-        
         if (\Auth::id() === $task->user_id) {
             $task->save();
+            return redirect('/tasks/list');
+        } else {
+            return redirect('/');
         }
-        
-        return redirect('/tasks/list');
     }
 
+    //ここの処理の変更が必要(4)ここは多分これで大丈夫
     public function destroy($id)
     {
         $task = Task::find($id);
         
         if (\Auth::id() === $task->user_id) {
             $task->delete();
+            return redirect('/tasks/list');
+        } else {
+            return redirect('/');
         }
-        
-        // $task->delete();
-        
-        return redirect('/tasks/list');
     }
 }
